@@ -2,13 +2,14 @@ import { useSelector } from 'react-redux';
 import { selectProjectAC } from '../../store/rootReducer';
 import store from '../../store/store';
 import { keyCreator } from '../../utils/keyCreator';
+import { useNavigate } from 'react-router-dom';
 
 const Projects = () => {
   const projects = useSelector((state) => state.root.projects);
-  const activeProject = useSelector((state) => state.root.activeProject);
+  const navigate = useNavigate();
   const handleClick = (e) => {
     store.dispatch(selectProjectAC(e.target.innerText));
-    console.log(activeProject);
+    navigate('/tasks');
   };
 
   return (
