@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import ModalWrapper from '../modalWrapper/modalWrapper';
+import ModalWrapper from '../modalWrapper';
 import { useSelector } from 'react-redux';
-import store from '../../store/store';
-import { addTaskAC } from '../../store/rootReducer';
+import store from '../../../store/store';
+import { addTaskAC } from '../../../store/rootReducer';
 
 const CreateNewTask = () => {
   const [modal, setModal] = useState(false);
@@ -30,14 +30,13 @@ const CreateNewTask = () => {
   const createTask = () => {
     if (header !== '') {
       const task = {
-        number: tasks.length,
+        number: tasks.queue.length + tasks.develop.length + tasks.done.length + 1,
         header,
         description,
         sDate: new Date(),
         eDate: '',
         priority,
         files: [],
-        status: 'queue',
         comment: {}
       };
       setHeader('');

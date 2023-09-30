@@ -5,8 +5,37 @@
 .lists {
   margin: 20px auto;
   display: flex;
+  column-gap: 20px;
   justify-content: space-between;
-  padding: 0 40px;
+  padding: 0 20px;
+  overflow-x: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  &:hover {
+    &::-webkit-scrollbar {
+      height: 5px;
+      display: block;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: #888;
+      cursor: pointer;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+      background: #555;
+      cursor: pointer;
+    }
+  }
 }
 
 .createBtn {

@@ -41,7 +41,7 @@ const UpdateTask = ({ task, closeAnim, modal, modalV, status }) => {
     <ModalWrapper modal={modal} modalV={modalV} closeAnim={closeAnim}>
       <>
         <div>
-          <p>header</p>
+          <p>{status}</p>
           <input
             onChange={(e) => {
               if (e.target.value !== '') {
@@ -80,7 +80,12 @@ const UpdateTask = ({ task, closeAnim, modal, modalV, status }) => {
           />
         </div>
 
-        <button onClick={updateTask}>Change task</button>
+        <button
+          onClick={(status) => {
+            updateTask(status);
+          }}>
+          Change task
+        </button>
         <div className="errorMessage">{message}</div>
       </>
     </ModalWrapper>

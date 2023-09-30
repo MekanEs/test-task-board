@@ -1,81 +1,56 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
-import { setStatusAC } from '../../store/rootReducer';
 import store from '../../store/store';
-import CreateNewTask from '../../components/createNewTask/createNewTask';
+import CreateNewTask from '../../components/modalWrapper/createNewTask/createNewTask';
 import { DragDropContext } from 'react-beautiful-dnd';
 
 import TaskList from '../../components/taskList/taskList';
+import { reorderAC, updateStateAC } from '../../store/rootReducer';
+import CreateNewList from '../../components/modalWrapper/createNewList/CreateNewList';
 
 const Tasks = () => {
-  const [modal, setModal] = useState(false);
-  const [modalV, setModalV] = useState(false);
-  const [activeTask, setActiveTask] = useState(undefined);
-  const statuses = ['queue', 'develop', 'done'];
-  const closeAnim = () => {
-    setModalV(false);
-    setTimeout(() => {
-      setModal(false);
-    }, 300);
-    document.body.style['overflow-y'] = 'visible';
-    setActiveTask(undefined);
-  };
-  const openAnim = (el) => {
-    setModal(true);
-    setTimeout(() => {
-      setModalV(true);
-    }, 300);
-    setActiveTask(el);
-    document.body.style['overflow-y'] = 'hidden';
-  };
-
+  const lists = useSelector((state) => state.root.activeProject.project.tasks);
+  const statuses = Object.keys(lists);
   const activeProject = useSelector((state) => state.root.activeProject);
 
-  const onDragEnd = (result, setStatusAC, tasks) => {
+  const onDragEnd = (result, tasks) => {
     console.log(result, tasks);
-    if (!result.destination || result.destination.droppableId === result.source.droppableId) return;
-    const { destination } = result;
+    if (!result.destination) return;
+    const { source, destination } = result;
     store.dispatch(
-      (destination.droppableId.toLowerCase(),
-      tasks.indexOf(tasks.filter((el) => el.id === result.draggableId)[0]))
+      reorderAC(source.droppableId, source.index, destination.droppableId, destination.index)
     );
   };
-
+  const state = useSelector((state) => state);
   useEffect(() => {
     if (activeProject !== 'undefined') {
-      //UpdateState
+      console.log('updateState', state);
+      store.dispatch(updateStateAC());
     }
   }, [activeProject]);
 
   return (
     <div className="TasksContainer">
-      <h2>{activeProject.name}</h2>
+      <h2>{activeProject?.name}</h2>
 
-      {!activeProject.name ? (
+      {!activeProject.name || !activeProject.project.tasks ? (
         'select project'
       ) : (
         <>
           <div className="lists">
             <DragDropContext
               onDragEnd={(result) => {
-                onDragEnd(result, setStatusAC, activeProject.project.tasks);
+                activeProject ? onDragEnd(result, activeProject.project.tasks) : () => {};
               }}>
-              {statuses.map((stat, ind) => (
-                <TaskList
-                  key={stat + ind}
-                  activeTask={activeTask}
-                  openAnim={openAnim}
-                  closeAnim={closeAnim}
-                  modal={modal}
-                  modalV={modalV}
-                  stat={stat}
-                  items={activeProject.project.tasks[stat]}
-                />
-              ))}
+              {statuses.map((stat, index) => {
+                return (
+                  <TaskList key={index} stat={stat} items={activeProject.project.tasks[stat]} />
+                );
+              })}
             </DragDropContext>
           </div>
-
+          <CreateNewList />
           <CreateNewTask />
         </>
       )}

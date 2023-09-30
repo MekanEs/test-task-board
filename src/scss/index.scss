@@ -7,7 +7,8 @@
 @import '../pages/tasks/tasks.scss';
 @import '../components/taskList/taskList.scss';
 @import '../components/modalWrapper/modalWrapper.scss';
-@import '../components/createNewTask/createNewTask.scss';
+@import '../components/modalWrapper/createNewTask/createNewTask.scss';
+@import '../components/modalWrapper/createNewList/createNewList.scss';
 
 * {
   color: $font-color;

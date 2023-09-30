@@ -11,12 +11,12 @@
 }
 .createTaskModal {
   position: absolute;
-  width: 50%;
+  width: 80%;
   background-color: $base-dark;
   padding: 40px;
   z-index: 2;
-  top: 30%;
-  right: 25%;
+  top: 25%;
+  right: 10%;
   flex-direction: column;
   input {
     background-color: #fff;
