@@ -18,3 +18,10 @@
     background-color: $bg;
   }
 }
+
+.no-effect {
+  border: none;
+  &:hover {
+    background-color: inherit;
+  }
+}

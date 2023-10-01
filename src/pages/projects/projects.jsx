@@ -15,7 +15,7 @@ const Projects = () => {
   return (
     <div>
       {Object.keys(projects).map((el, index) => (
-        <div onClick={handleClick} key={keyCreator(index)}>
+        <div className="project" onClick={handleClick} key={keyCreator(index)}>
           {el}
         </div>
       ))}

@@ -20,87 +20,19 @@ let initialState = JSON.parse(localStorage.getItem('test-task-jira')) || {
             eDate: '',
             priority: '1',
             files: [],
+            innerTasks: [{ header: 'do the dishes1', description: 'do the dishes rigth now' }],
             comment: {
-              text: 'mekan',
-              comment: {
-                text: 'inner',
-                comment: {}
-              }
-            }
-          },
-          {
-            id: uuid(),
-            number: '20',
-            header: 'do the dishes122',
-            description: 'do the dishes rigth now',
-            sDate: new Date('Dec 8 2023 21:48'),
-            eDate: '',
-            priority: '1',
-            files: [],
-            comment: {
-              text: 'mekan',
-              comment: {
-                text: 'inner',
-                comment: {}
-              }
+              id: 1,
+              text: '',
+              comment: [
+                { text: 'text1', comment: [{ text: 'text11', comment: [] }] },
+                { text: 'text2', comment: [{ text: 'text21', comment: [] }] }
+              ]
             }
           }
         ],
-        develop: [
-          {
-            id: uuid(),
-            number: '1',
-            header: 'do the dishes2',
-            description: 'do the dishes rigth now',
-            sDate: new Date('Dec 8 2023 21:48'),
-            eDate: '',
-            priority: '1',
-            files: [],
-            comment: {
-              text: 'mekan',
-              comment: {
-                text: 'inner',
-                comment: {}
-              }
-            }
-          }
-        ],
-        done: [
-          {
-            id: uuid(),
-            number: '3',
-            header: 'do the dishes3',
-            description: 'do the dishes rigth now',
-            sDate: new Date('Dec 8 2023 21:48'),
-            eDate: '',
-            priority: '1',
-            files: [],
-            comment: {
-              text: 'mekan',
-              comment: {
-                text: 'inner',
-                comment: {}
-              }
-            }
-          },
-          {
-            id: uuid(),
-            number: '38',
-            header: 'do the dishes38',
-            description: 'do the dishes rigth now',
-            sDate: new Date('Dec 8 2023 21:48'),
-            eDate: '',
-            priority: '1',
-            files: [],
-            comment: {
-              text: 'mekan',
-              comment: {
-                text: 'inner',
-                comment: {}
-              }
-            }
-          }
-        ]
+        develop: [],
+        done: []
       },
 
       sDate: new Date('Dec 8 2023 21:48')
@@ -117,12 +49,14 @@ let initialState = JSON.parse(localStorage.getItem('test-task-jira')) || {
             eDate: '',
             priority: '1',
             files: [],
+            innerTasks: [{ header: 'do the dishes1', description: 'do the dishes rigth now' }],
             comment: {
-              text: ['mekan'],
-              comment: {
-                text: 'inner',
-                comment: {}
-              }
+              id: 1,
+              text: '',
+              comment: [
+                { text: 'text1', comment: [{ text: 'text11', comment: [] }] },
+                { text: 'text2', comment: [{ text: 'text21', comment: [] }] }
+              ]
             }
           }
         ],

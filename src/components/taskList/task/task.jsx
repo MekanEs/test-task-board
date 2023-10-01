@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import UpdateTask from './updateTask';
+import UpdateTask from './updateTask/updateTask';
 
 const Task = ({
   provided,
@@ -28,15 +28,13 @@ const Task = ({
 
   const [modal, setModal] = useState(false);
   const [modalV, setModalV] = useState(false);
+  console.log(item.comment);
   return (
     <div
       ref={provided.innerRef}
       {...provided.draggableProps}
       {...provided.dragHandleProps}
       style={{
-        background: snapshot.isDragging ? 'red' : 'white',
-
-        padding: '5px 5px',
         ...provided.draggableProps.style
       }}
       className="task">
@@ -44,12 +42,13 @@ const Task = ({
         ref={provided.innerRef}
         {...provided.draggableProps}
         {...provided.dragHandleProps}
-        style={{ background: snapshot.isDragging ? 'red' : 'blue' }}
+        style={{ background: snapshot.isDragging ? '#dbd2a7' : '#908563' }}
         key={item.id}
         className="taskInner">
         <div> header: {item.header}</div>
         <div> number: {item.number}</div>
         <div>priority: {item.priority}</div>
+
         <button
           onClick={() => {
             openAnim(item);

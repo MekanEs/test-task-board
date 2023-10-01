@@ -11,7 +11,7 @@ let RootReducersBag = combineReducers({
   root: rootReducer,
   info: infoReducer
 });
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION__ || compose;
 const store = createStore(
   RootReducersBag,
   /* preloadedState, */ composeEnhancers(applyMiddleware())

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
-import Task from './task';
+
 import { v4 as uuid } from 'uuid';
+import Task from './task/task';
 const TaskList = ({ stat, items }) => {
   return (
     <Droppable key={stat} droppableId={stat}>
@@ -10,7 +11,7 @@ const TaskList = ({ stat, items }) => {
           {...provided.droppableProps}
           ref={provided.innerRef}
           style={{
-            background: snapshot.isDraggingOver ? 'red' : 'white',
+            background: snapshot.isDraggingOver ? '#dbd2a7' : '#908563',
             minHeight: '500px',
             ...provided.droppableProps.style
           }}

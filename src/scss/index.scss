@@ -9,6 +9,8 @@
 @import '../components/modalWrapper/modalWrapper.scss';
 @import '../components/modalWrapper/createNewTask/createNewTask.scss';
 @import '../components/modalWrapper/createNewList/createNewList.scss';
+@import '../components/taskList/task/updateTask/updateTask.scss';
+@import '../components/comments/comments.scss';
 
 * {
   color: $font-color;
@@ -20,4 +22,17 @@ body {
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.project {
+  padding: 20px;
+  font-size: 24px;
+  border-radius: 10px;
+  border: 1px solid #000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: $base-dark;
+  }
 }

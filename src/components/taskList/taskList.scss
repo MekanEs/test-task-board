@@ -9,11 +9,14 @@
   width: 30%;
 }
 .list {
+  padding: 5px;
   display: flex;
   flex-direction: column;
   min-height: 500px;
   width: 30%;
   min-width: 220px;
+  transition: all 0.4s ease;
+  row-gap: 5px;
 }
 .list-header {
   text-align: center;
@@ -24,10 +27,11 @@
   border: 1px solid $font-color;
 }
 .task {
+  border-radius: 10px;
+  transition: all 0.3s ease;
   .taskInner {
     border-radius: 10px;
     padding: 5px;
-    margin: 0 auto;
     border: 1px solid #000;
     width: 100%;
     display: flex;
